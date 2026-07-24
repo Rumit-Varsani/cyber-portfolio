@@ -251,8 +251,29 @@ export const translations = {
     certs: {
       command: "ls ~/zertifikate/",
       title: "Zertifikate",
-      subtitle: "Vorhandene Nachweise mit Links. Zusätzlich geplante Security-Themen.",
+      subtitle: "Nachweise mit Links (LinkedIn Learning, Udemy und weitere).",
       items: [
+        {
+          name: "Networking Foundations: Networking Basics",
+          issuer: "LinkedIn Learning",
+          date: "Okt 2025",
+          note: "Netzwerk-Grundlagen (OSI/TCP-IP-Konzepte, Basics).",
+          url: "https://www.linkedin.com/learning/certificates/cf505f3fbef256dce962c508d00ae12fb4a3054a567d142b3b7691be2e86ae81",
+        },
+        {
+          name: "Cisco Networking Foundations: Fundamentals of Cisco Networking",
+          issuer: "LinkedIn Learning",
+          date: "Nov 2025",
+          note: "Cisco-Netzwerk-Fundamentals über LinkedIn Learning.",
+          url: "https://www.linkedin.com/learning/certificates/cc380afbfdf24eff5578c6da6b473e29bf45662e3d320578eb5da900305ee5b5",
+        },
+        {
+          name: "IT Troubleshooting & IT Technical Support Helpdesk Bootcamp",
+          issuer: "Udemy",
+          date: "Sep 2024",
+          note: "IT-Support / Helpdesk Troubleshooting.",
+          url: "https://www.udemy.com/certificate/UC-d8c3c7f8-063a-4dae-b456-17cf4b382ed2/",
+        },
         {
           name: "HackerRank SQL Basics",
           issuer: "HackerRank",
@@ -284,8 +305,8 @@ export const translations = {
       ],
       roadmapTitle: "geplant / in arbeit",
       roadmap: [
-        "Netzwerk- und Security-Grundlagen vertiefen (z. B. Network+/Security+-Stoff)",
-        "Weiter Labs und Writeups aus eigener Praxis",
+        "Netzwerk- und Security-Grundlagen weiter vertiefen",
+        "Weitere Labs aus eigener Praxis",
       ],
       viewCert: "Nachweis öffnen ↗",
     },
@@ -572,8 +593,29 @@ export const translations = {
     certs: {
       command: "ls ~/certificates/",
       title: "Certificates",
-      subtitle: "Existing credentials with links. Plus topics still in progress.",
+      subtitle: "Credentials with links (LinkedIn Learning, Udemy, and others).",
       items: [
+        {
+          name: "Networking Foundations: Networking Basics",
+          issuer: "LinkedIn Learning",
+          date: "Oct 2025",
+          note: "Networking basics (OSI/TCP-IP concepts).",
+          url: "https://www.linkedin.com/learning/certificates/cf505f3fbef256dce962c508d00ae12fb4a3054a567d142b3b7691be2e86ae81",
+        },
+        {
+          name: "Cisco Networking Foundations: Fundamentals of Cisco Networking",
+          issuer: "LinkedIn Learning",
+          date: "Nov 2025",
+          note: "Cisco networking fundamentals via LinkedIn Learning.",
+          url: "https://www.linkedin.com/learning/certificates/cc380afbfdf24eff5578c6da6b473e29bf45662e3d320578eb5da900305ee5b5",
+        },
+        {
+          name: "IT Troubleshooting & IT Technical Support Helpdesk Bootcamp",
+          issuer: "Udemy",
+          date: "Sep 2024",
+          note: "IT support / helpdesk troubleshooting.",
+          url: "https://www.udemy.com/certificate/UC-d8c3c7f8-063a-4dae-b456-17cf4b382ed2/",
+        },
         {
           name: "HackerRank SQL Basics",
           issuer: "HackerRank",
@@ -605,7 +647,7 @@ export const translations = {
       ],
       roadmapTitle: "planned / in progress",
       roadmap: [
-        "Deepen networking and security fundamentals",
+        "Continue networking and security fundamentals",
         "More labs from own practice",
       ],
       viewCert: "Open credential ↗",
