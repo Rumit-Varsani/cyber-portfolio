@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""SOC-style authentication log analyzer."""
+"""Authentication log analyzer for failed-login patterns."""
 
 from __future__ import annotations
 
@@ -9,10 +9,9 @@ import json
 import re
 from collections import defaultdict
 from dataclasses import asdict, dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
-# Example formats: ssh / generic auth lines
 FAILED_RE = re.compile(
     r"(?P<ts>\w{3}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2}).*?"
     r"Failed password for (?:invalid user )?(?P<user>\S+) from (?P<ip>\d+\.\d+\.\d+\.\d+)",
@@ -65,13 +64,11 @@ def parse_events(path: Path) -> list[dict]:
 def detect(events: list[dict], threshold: int) -> list[Finding]:
     findings: list[Finding] = []
     fails_by_ip: dict[str, list[dict]] = defaultdict(list)
-    fails_by_ip_user: dict[tuple[str, str], int] = defaultdict(int)
 
     for e in events:
         if e["type"] != "failed":
             continue
         fails_by_ip[e["ip"]].append(e)
-        fails_by_ip_user[(e["ip"], e["user"])] += 1
         findings.append(
             Finding(
                 severity="low",
@@ -108,14 +105,13 @@ def detect(events: list[dict], threshold: int) -> list[Finding]:
                 )
             )
 
-    # Keep summary findings first for recruiters reading JSON
     order = {"high": 0, "medium": 1, "low": 2}
     findings.sort(key=lambda f: (order.get(f.severity, 9), -f.count))
     return findings
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Analyze auth logs for SOC-style findings")
+    parser = argparse.ArgumentParser(description="Analyze auth logs for failure patterns")
     parser.add_argument("--log", required=True, type=Path)
     parser.add_argument("--threshold", type=int, default=5)
     parser.add_argument("--out", type=Path, default=Path("findings.json"))
@@ -124,18 +120,21 @@ def main() -> int:
 
     events = parse_events(args.log)
     findings = detect(events, args.threshold)
+
+    # Prefer higher-severity rules first; cap raw failed_login noise in JSON
+    ranked = [f for f in findings if f.rule != "failed_login"]
+    low = [f for f in findings if f.rule == "failed_login"][:20]
+
     summary = {
-        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
         "tool": "soc-auth-log-analyzer",
-        "author": "Rumit Varsani",
         "events_parsed": len(events),
         "findings_count": len(findings),
-        "findings": [asdict(f) for f in findings if f.rule != "failed_login"]
-        + [asdict(f) for f in findings if f.rule == "failed_login"][:20],
+        "findings": [asdict(f) for f in ranked + low],
     }
     args.out.write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(f"[+] Parsed events: {len(events)}")
-    print(f"[+] Findings (shown high/medium first):")
+    print("[+] Findings:")
     for f in findings:
         if f.rule == "failed_login":
             continue

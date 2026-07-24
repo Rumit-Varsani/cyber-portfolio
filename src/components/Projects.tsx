@@ -25,9 +25,6 @@ export default function Projects() {
                 </span>
               </div>
               <h3 className="mb-2 text-lg text-[var(--text)]">{project.title}</h3>
-              <p className="mb-1 text-[10px] tracking-wide text-[var(--text-dim)]">
-                by Rumit Varsani · GitHub
-              </p>
               <p className="mb-4 flex-1 text-sm leading-relaxed text-[var(--text-muted)]">
                 {project.description}
               </p>

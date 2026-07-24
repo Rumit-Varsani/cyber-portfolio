@@ -1,34 +1,29 @@
 # SOC Auth Log Analyzer
 
-> **Built by [Rumit Varsani](https://github.com/Rumit-Varsani)** · Berlin, Germany · Cybersecurity & Networking portfolio lab
+Parses common SSH-style authentication log lines and surfaces failed logins, repeated failures from one source, and multi-user spray patterns.
 
-> Repository: https://github.com/Rumit-Varsani/soc-auth-log-analyzer
+## What it does
 
-Junior SOC / security monitoring style tool that parses authentication logs and
-highlights **failed logins**, **brute-force patterns**, and top noisy sources.
+| Rule | Meaning |
+|------|---------|
+| `failed_login` | Single failed authentication line |
+| `brute_force_burst` | Many failures from the same source IP |
+| `password_spray_hint` | Many usernames failing from one source IP |
 
-## Skills demonstrated
-
-- Log analysis mindset (SOC Analyst junior / IT Security Operations)
-- Detection logic for authentication abuse
-- Structured findings export (JSON / CSV) for tickets or SIEM practice
-- Clean documentation — important for German enterprise environments
-
-## Quick start
+## Usage
 
 ```bash
 python3 analyzer.py --log samples/auth_sample.log --threshold 5 --out findings.json
 python3 analyzer.py --log samples/auth_sample.log --csv findings.csv
 ```
 
-## Sample detection rules
+## Layout
 
-| Rule | Description |
-|------|-------------|
-| `failed_login` | Single failed authentication event |
-| `brute_force_burst` | ≥ N failures from same source IP within window |
-| `password_spray_hint` | Many usernames failing from one IP |
+```
+analyzer.py
+samples/auth_sample.log
+```
 
-## Author
+## Notes
 
-**Rumit Varsani** · Berlin · [GitHub](https://github.com/Rumit-Varsani)
+Sample log is synthetic lab data (RFC 5737 documentation IPs). Adapt parsers for your real log format before production use.

@@ -1,21 +1,25 @@
-# Case 01 — Suspicious auth noise after scan
+# Case 01 — SSH noise after port probes
 
-**Analyst:** Rumit Varsani  
 **Date:** 2026-07-20  
 **Severity:** Medium  
+**Environment:** Lab capture only  
 
 ## Summary
-Lab capture showed repeated failed SSH authentication attempts from a single external IP following a short port scan pattern.
+
+Lab traffic showed repeated failed SSH authentication attempts from one external IP after short probing of common ports.
 
 ## Evidence
-- Multiple SYN packets to ports 22/80/443
-- Failed password events correlated in auth log analyzer
-- No successful privilege escalation observed in sample window
 
-## Action
+- SYN activity toward ports 22/80/443
+- Failed password events in auth logs for the same source
+- No successful elevated access observed in the sample window
+
+## Actions taken (lab)
+
 - Block source IP on lab firewall
-- Enforce key-only SSH
-- Continue monitoring for password spraying
+- Prefer key-based SSH in lab VM config
+- Keep monitoring for multi-user password attempts
 
 ## Status
-Closed — lab exercise complete.
+
+Closed — lab exercise.

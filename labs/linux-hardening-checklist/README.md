@@ -1,46 +1,38 @@
 # Linux Hardening Checklist
 
-> **Built by [Rumit Varsani](https://github.com/Rumit-Varsani)** · Berlin, Germany · Cybersecurity & Networking portfolio lab
+Practical checklist and Bash helpers for reviewing a Linux lab VM baseline.
 
-> Repository: https://github.com/Rumit-Varsani/linux-hardening-checklist
+## Contents
 
-Practical **CIS-inspired** Linux hardening checklist + Bash helpers for lab VMs.
-
-Ideal talking points for German employers looking for Junior IT Security /
-System hardening awareness (BSI-minded operations).
-
-## What's included
-
-| Item | Description |
+| Path | Description |
 |------|-------------|
-| `checklist.md` | Human checklist for audit conversations |
-| `scripts/audit_baseline.sh` | Non-destructive audit snapshot |
-| `scripts/apply_lab_hardening.sh` | Lab-only hardening steps (opt-in) |
-| `reports/` | Example audit output |
+| `checklist.md` | Manual review checklist |
+| `scripts/audit_baseline.sh` | Read-only audit snapshot |
+| `scripts/apply_lab_hardening.sh` | Optional lab-only changes (opt-in) |
+| `reports/example-audit.txt` | Example audit output |
 
-## Run audit (safe)
+## Audit (safe / read-only)
 
 ```bash
 chmod +x scripts/*.sh
 ./scripts/audit_baseline.sh | tee reports/audit-$(date +%F).txt
 ```
 
-## Lab hardening (VM only)
+## Lab hardening (disposable VM only)
 
 ```bash
-# Review first — do NOT run on production
+# Review the script first. Do not run on production.
 sudo ./scripts/apply_lab_hardening.sh --i-am-on-a-lab-vm
 ```
 
-## Topics covered
+## Coverage
 
-- SSH hardening checklist
-- Unnecessary services
-- Firewall presence (ufw/firewalld)
-- Password & sudo hygiene
-- Automatic updates awareness
-- Logging / journald basics
+- SSH config checks
+- Listening ports
+- Firewall tooling presence
+- Local interactive accounts
+- Failed login visibility (when available)
 
-## Author
+## Disclaimer
 
-**Rumit Varsani** · Berlin · [GitHub](https://github.com/Rumit-Varsani)
+Scripts are for learning and lab use. Validate every change for your environment before applying it.

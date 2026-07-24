@@ -1,59 +1,41 @@
 # Network Recon Toolkit
 
-> **Built by [Rumit Varsani](https://github.com/Rumit-Varsani)** · Berlin, Germany · Cybersecurity & Networking portfolio lab
+Small Python toolkit for authorized host checks: reachability, TCP port scan, optional banner grab, JSON report.
 
-> Repository: https://github.com/Rumit-Varsani/network-recon-toolkit
-
-Educational network reconnaissance toolkit for **authorized labs only**.
-
-Built for entry / intermediate cybersecurity & networking roles in Germany  
-(e.g. Junior Network Security, IT Security Specialist, SOC Analyst trainee).
+**Use only on systems you own or have written permission to test.**
 
 ## Features
 
-- Host discovery (ICMP / TCP connect checks)
-- Port scanning with service name hints
-- Banner grabbing (HTTP / SSH style probes)
-- JSON report export for documentation
-- Strict **authorization banner** — refuse to run without explicit opt-in
+- Host reachability check
+- Port scanning (single ports or ranges)
+- Light banner grab (HTTP/SSH-style)
+- JSON report output
+- Requires an explicit authorization flag before scanning
 
-## Why this matters for recruiters
+## Requirements
 
-Demonstrates:
+- Python 3.10+
 
-- TCP/IP fundamentals and service awareness
-- Safe recon methodology (scope, consent, documentation)
-- Python for security automation
-- Clear operational reporting
-
-## Quick start
+## Usage
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-
-# Lab only — you must own / have written permission for the target
-python recon.py --target 127.0.0.1 --ports 22,80,443,8080 --i-own-this-target
+python3 recon.py --target 127.0.0.1 --ports 22,80,443,8080 --i-own-this-target
+python3 recon.py --target 127.0.0.1 --ports 20-25,80 --out report.json --i-own-this-target
 ```
 
-## Ethical use
+Without `--i-own-this-target` the tool exits and does not scan.
 
-Use **only** on systems you own or have written authorization to test.  
-Unauthorized scanning is illegal in Germany (§ 202a–202c StGB and related law).
-
-## Project structure
+## Layout
 
 ```
-recon.py              # CLI entrypoint
+recon.py
 modules/
-  discovery.py        # Host up/down checks
-  ports.py            # Port scan + banners
-  report.py           # JSON report writer
-sample_report.json    # Example output
+  discovery.py
+  ports.py
+  report.py
+example_report.json
 ```
 
-## Author
+## Notes
 
-**Rumit Varsani** — Berlin, Germany  
-GitHub: [Rumit-Varsani](https://github.com/Rumit-Varsani)
+Unauthorized scanning may be illegal depending on jurisdiction. Keep scope tight and document authorization in your own notes.

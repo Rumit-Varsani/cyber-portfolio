@@ -18,12 +18,11 @@ def write_report(
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "tool": "network-recon-toolkit",
-        "author": "Rumit Varsani",
         "target": target,
         "host_up": host_up,
         "open_ports": [r for r in results if r["state"] == "open"],
         "all_results": results,
-        "disclaimer": "Authorized lab use only.",
+        "disclaimer": "Authorized use only.",
     }
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     return path

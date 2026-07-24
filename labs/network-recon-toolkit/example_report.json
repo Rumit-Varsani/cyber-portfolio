@@ -1,7 +1,6 @@
 {
-  "generated_at": "2026-07-24T12:00:00+00:00",
+  "generated_at": "2026-07-20T12:00:00+00:00",
   "tool": "network-recon-toolkit",
-  "author": "Rumit Varsani",
   "target": "127.0.0.1",
   "host_up": true,
   "open_ports": [
@@ -18,5 +17,5 @@
       "banner": "HTTP/1.1 200 OK"
     }
   ],
-  "disclaimer": "Authorized lab use only."
+  "disclaimer": "Authorized use only."
 }

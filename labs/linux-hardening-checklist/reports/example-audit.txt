@@ -4,7 +4,7 @@ Date: 2026-07-20T10:00:00+02:00
 Kernel: 6.8.0-generic
 
 --- Users with shells ---
-rumit /bin/bash
+labuser /bin/bash
 
 --- Listening ports (if ss available) ---
 State  Recv-Q Send-Q Local Address:Port
