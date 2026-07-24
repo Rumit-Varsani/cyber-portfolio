@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rumit Varsani — Cyber Portfolio
 
-## Getting Started
+Terminal-themed personal portfolio focused on **cybersecurity** and **networking**.
 
-First, run the development server:
+Built with **Next.js**, **TypeScript**, and **Tailwind CSS**. Ready to deploy on **Vercel**.
+
+## Features
+
+- Dark terminal / hacker aesthetic (scanlines, green glow, mono UI)
+- Sections: Home, About, Skills, Projects/Labs, Experience, Blog, Contact
+- Blog writeups with dedicated routes (`/blog`, `/blog/[slug]`)
+- Contact form opens your mail client (`mailto:`)
+- Content centralized in `src/data/content.ts` — edit once, update everywhere
+
+## Quick start
 
 ```bash
+cd ~/cyber-portfolio
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Local development server |
+| `npm run build` | Production build         |
+| `npm run start` | Serve production build   |
+| `npm run lint`  | ESLint                   |
 
-## Learn More
+## Customize your content
 
-To learn more about Next.js, take a look at the following resources:
+Edit **`src/data/content.ts`**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `site` — name, email, LinkedIn, tagline
+- `about`, `skills`, `projects`
+- `experience`, `education`, `certifications`
+- `blogPosts` — writeups (slug, title, body)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy to Vercel
 
-## Deploy on Vercel
+### Option A — Vercel CLI
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm i -g vercel
+cd ~/cyber-portfolio
+vercel
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Option B — GitHub + Vercel dashboard
+
+1. Create a GitHub repo and push this project
+2. Import the repo at [vercel.com/new](https://vercel.com/new)
+3. Framework preset: **Next.js** (auto-detected)
+4. Deploy
+
+If you already have a Vercel project for your site, either:
+
+- Point that project’s Git root to this repo, or
+- Replace the old project files with this codebase and redeploy
+
+## Project structure
+
+```
+src/
+  app/                 # App Router pages (home, blog, 404)
+  components/          # UI sections (Hero, Skills, etc.)
+  data/content.ts      # All portfolio copy & data
+public/                # Static assets
+```
+
+## Notes
+
+- Skill percentages and lab descriptions are starting points — update them as you grow
+- Contact form uses `mailto:` (no backend required). Swap in Formspree / Resend later if you want server-side delivery
+- GitHub URL in content may need correcting if your handle differs
+
+## License
+
+Personal portfolio — free to adapt for your own use.
