@@ -2,14 +2,14 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 /**
- * Edge security layer for the portfolio.
- * Hardens responses; does not claim "unhackable" — reduces common web attack surface.
+ * Edge security layer (Next.js "proxy" — formerly middleware).
+ * Hardens responses; does not claim "unhackable".
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next();
   const { pathname } = request.nextUrl;
 
-  // Block common probe paths early (no need to hit app)
+  // Block common probe paths early
   const blocked = [
     "/.env",
     "/.git",
@@ -25,7 +25,6 @@ export function middleware(request: NextRequest) {
     return new NextResponse("Not Found", { status: 404 });
   }
 
-  // Security headers (defense in depth; also set in next.config for static assets)
   const headers = response.headers;
   headers.set("X-Content-Type-Options", "nosniff");
   headers.set("X-Frame-Options", "DENY");
@@ -41,7 +40,7 @@ export function middleware(request: NextRequest) {
     "Strict-Transport-Security",
     "max-age=63072000; includeSubDomains; preload",
   );
-  // CSP: self-hosted Next fonts; FormSubmit for contact; no third-party scripts
+  // next/font is self-hosted under /_next; contact posts to same origin then FormSubmit server-side
   headers.set(
     "Content-Security-Policy",
     [
@@ -54,12 +53,11 @@ export function middleware(request: NextRequest) {
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
       "font-src 'self' data:",
-      "connect-src 'self' https://formsubmit.co",
+      "connect-src 'self'",
       "upgrade-insecure-requests",
     ].join("; "),
   );
 
-  // Reduce fingerprint noise
   headers.delete("X-Powered-By");
 
   return response;
@@ -67,9 +65,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Apply to all paths except Next internals and static files with extensions.
-     */
     "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml)$).*)",
   ],
 };

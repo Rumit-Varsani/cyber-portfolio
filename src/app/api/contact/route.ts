@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 
-export const runtime = "edge";
-
 const EMAIL = process.env.CONTACT_EMAIL || "varsanirumit@gmail.com";
 const MAX_NAME = 100;
 const MAX_EMAIL = 200;
