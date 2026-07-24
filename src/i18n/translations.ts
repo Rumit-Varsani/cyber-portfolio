@@ -1,0 +1,781 @@
+export type Lang = "de" | "en";
+
+export const translations = {
+  de: {
+    meta: {
+      title: "Rumit Varsani | Cybersecurity & Networking Portfolio",
+      description:
+        "Portfolio von Rumit Varsani — IT-Support-Hintergrund, Fokus auf Cybersecurity & Networking. Offen für Einstiegs- und Intermediate-Rollen in ganz Deutschland.",
+    },
+    nav: {
+      home: "start",
+      about: "über mich",
+      skills: "skills",
+      projects: "projekte",
+      experience: "erfahrung",
+      education: "bildung",
+      certs: "zertifikate",
+      blog: "blog",
+      contact: "kontakt",
+    },
+    lang: { de: "DE", en: "EN", label: "Sprache" },
+    hero: {
+      status: "Berlin · mobil in ganz DE · sofort verfügbar",
+      whoami: "whoami",
+      title: "Cybersecurity & Networking",
+      subtitle:
+        "Vom IT-Support zur Cybersecurity — ich baue praxisnahe Labs zu Netzwerk, Logs und Hardening und suche Einstiegs- bis Intermediate-Rollen in Deutschland.",
+      ctaProjects: "./projekte_ansehen",
+      ctaContact: "./kontakt",
+      linkedin: "linkedin ↗",
+      github: "github ↗",
+      stats: [
+        { label: "fokus", value: "sec + netz" },
+        { label: "standort", value: "DE weit" },
+        { label: "level", value: "entry→mid" },
+      ],
+      terminalTitle: "rumit@ops:~/portfolio$",
+      bootLines: [
+        "sichere shell wird gestartet…",
+        "netzwerk-stack geladen… ok",
+        "security-module gemountet… ok",
+        "operator: Rumit Varsani",
+        "profil: cybersecurity & networking",
+        "status: offen für Rollen in ganz Deutschland",
+      ],
+      tip: "TIPP Module erkunden — Skills, Labs, Zertifikate, Kontakt.",
+    },
+    about: {
+      command: "cat ~/ueber-mich.md",
+      title: "Über mich",
+      subtitle:
+        "Warum Cybersecurity & Networking — und wie IT-Support + Analytics dorthin führen.",
+      paragraphs: [
+        "Ich bin Rumit Varsani, basierend in Berlin und bereit, in ganz Deutschland zu arbeiten. Mein Fundament ist praktischer IT-Support: Incidents dokumentieren, systematisch troubleshooting und Nutzerprobleme unter Zeitdruck lösen.",
+        "Heute richte ich dieses Fundament bewusst auf Cybersecurity und Networking aus — Netzwerkgrundlagen, Paketanalyse, Log-Analyse, Linux-Hardening und sichere Betriebsabläufe. Ich lerne hands-on mit eigenen Labs, die Recruiting-Teams nachvollziehen können.",
+        "Mein MSc Data Analytics (2022–2024) ist kein Widerspruch zur Security, sondern ein Vorteil: Logs, Metriken und Anomalien sind Datenprobleme. SQL, Python und strukturierte Auswertung helfen in SOC-, Monitoring- und Reporting-Kontexten — genau dort, wo Junior-Security-Rollen oft starten.",
+      ],
+      focusTitle: "fokus_bereiche.cfg",
+      focusHint: "# aktuelle Prioritäten",
+      focusAreas: [
+        "Netzwerkprotokolle, Subnetting & Segmentierung",
+        "Defensive Security / SOC-Grundlagen",
+        "Linux-Hardening & sichere Administration",
+        "Log-Analyse & Security-Automation (Python/Bash)",
+      ],
+    },
+    skills: {
+      command: "ls -la ~/skills/",
+      title: "Skills & Tooling",
+      subtitle:
+        "Fokus ausschließlich auf Cybersecurity & Networking — ausgerichtet am deutschen IT-Security-Markt (Junior SOC, Netzwerk/IT-Security, Support mit Security-Fokus).",
+      groups: {
+        security: "sicherheit",
+        networking: "netzwerk",
+        operations: "betrieb & defence",
+      },
+      security: [
+        { name: "Security-Grundlagen / CIA / Bedrohungsdenken", level: 70 },
+        { name: "Log-Analyse & Incident-Dokumentation", level: 75 },
+        { name: "Linux Hardening (Audit & Baseline)", level: 65 },
+        { name: "OWASP Top 10 Awareness", level: 60 },
+        { name: "SIEM-Konzepte / Alert-Triage (Lernpfad)", level: 55 },
+        { name: "DSGVO / Security-Awareness im Betrieb", level: 65 },
+      ],
+      networking: [
+        { name: "TCP/IP & OSI-Modell", level: 80 },
+        { name: "Subnetting, VLAN & Segmentierung", level: 70 },
+        { name: "DNS / DHCP / HTTP(S) / VPN-Konzepte", level: 72 },
+        { name: "Firewall-Grundlagen & Access Control", level: 65 },
+        { name: "Wireshark / Paketanalyse", level: 68 },
+        { name: "Netzwerk-Troubleshooting", level: 75 },
+      ],
+      operations: [
+        { name: "IT-Support / Incident Handling", level: 85 },
+        { name: "Windows & Linux Administration (Grundlage)", level: 70 },
+        { name: "Active Directory Awareness", level: 55 },
+        { name: "Python für Security-Automation", level: 72 },
+        { name: "Bash / CLI-Workflows", level: 68 },
+        { name: "Ticketing & saubere Doku (ITIL-nah)", level: 80 },
+      ],
+      toolsTitle: "werkzeugkasten",
+      tools: [
+        "Wireshark",
+        "Nmap",
+        "tcpdump / tshark",
+        "Linux (Ubuntu)",
+        "Windows Admin",
+        "Firewall-Konzepte",
+        "VPN-Konzepte",
+        "Python",
+        "Bash",
+        "Git",
+        "VirtualBox / Lab-VMs",
+        "Log-Analyse",
+        "ISO 27001 Awareness",
+        "BSI-Grundverständnis",
+      ],
+    },
+    projects: {
+      command: "find ~/labs -type f -name '*.md'",
+      title: "Projekte & Labs",
+      subtitle:
+        "Vier praxisnahe Cyber-/Networking-Labs für Einstiegs- und Intermediate-Rollen — Code, Playbooks und Dokumentation inklusive.",
+      viewGithub: "GitHub öffnen ↗",
+      viewCode: "Code im Portfolio",
+      items: [
+        {
+          id: "network-recon-toolkit",
+          title: "Network Recon Toolkit",
+          tag: "netzwerk",
+          description:
+            "Educational Recon-Toolkit: Host-Discovery, Portscan, Banner-Grabbing und JSON-Reports — nur für autorisierte Labs, mit Ethics-Guardrails.",
+          stack: ["Python", "TCP/IP", "Sockets", "JSON Reports"],
+          highlights: [
+            "Autorisierungs-Flag verhindert versehentliches Scannen",
+            "Service-Hints & Banner für Untersuchungswissen",
+            "Report-Export für Tickets / Audit-Nachweis",
+          ],
+          status: "lab" as const,
+          github: "https://github.com/Rumit-Varsani/network-recon-toolkit",
+          localPath: "labs/network-recon-toolkit",
+        },
+        {
+          id: "soc-auth-log-analyzer",
+          title: "SOC Auth Log Analyzer",
+          tag: "soc",
+          description:
+            "SOC-nahe Auswertung von Auth-Logs: Failed Logins, Brute-Force-Muster, Password-Spray-Hinweise — Export als JSON/CSV.",
+          stack: ["Python", "Log Analysis", "Detection Rules", "CSV/JSON"],
+          highlights: [
+            "Detection Rules für Junior-SOC-Szenarien",
+            "Severity-Sortierung für schnelle Triage",
+            "Sample-Logs für Demo in Interviews",
+          ],
+          status: "lab" as const,
+          github: "https://github.com/Rumit-Varsani/soc-auth-log-analyzer",
+          localPath: "labs/soc-auth-log-analyzer",
+        },
+        {
+          id: "linux-hardening-checklist",
+          title: "Linux Hardening Checklist",
+          tag: "hardening",
+          description:
+            "CIS-inspirierte Linux-Hardening-Checkliste plus sichere Audit-Scripts und optionale Lab-Härtung — ideal für Security-Ops-Gespräche.",
+          stack: ["Bash", "Linux", "SSH", "UFW", "Audit"],
+          highlights: [
+            "Read-only Baseline-Audit für Lab-VMs",
+            "Checkliste für Ticket- und Audit-Sprache",
+            "Explizite Lab-only Schutzschalter",
+          ],
+          status: "lab" as const,
+          github: "https://github.com/Rumit-Varsani/linux-hardening-checklist",
+          localPath: "labs/linux-hardening-checklist",
+        },
+        {
+          id: "pcap-threat-hunt-lab",
+          title: "PCAP Threat Hunt Lab",
+          tag: "forensik",
+          description:
+            "Paketanalyse-Playbook mit Wireshark/tshark-Filtern, Case-Notes und Python-Helper — so dokumentieren Defenders Network Incidents.",
+          stack: ["Wireshark", "tshark", "Python", "Playbook"],
+          highlights: [
+            "Hunt-Workflow von Scope bis Residual Risk",
+            "Filter-Cheat-Sheet für Interviews",
+            "Beispiel-Case-Note im Ticket-Stil",
+          ],
+          status: "lab" as const,
+          github: "https://github.com/Rumit-Varsani/pcap-threat-hunt-lab",
+          localPath: "labs/pcap-threat-hunt-lab",
+        },
+      ],
+    },
+    experience: {
+      command: "journalctl -u career",
+      title: "Berufserfahrung",
+      subtitle:
+        "IT-Support-Fundamente — übersetzt in Security-Mindset, Troubleshooting und saubere Dokumentation.",
+      items: [
+        {
+          role: "IT Support / Technical Support",
+          org: "Aani Brothers Infotech",
+          location: "Surat, Indien",
+          period: "Jul 2021 – Okt 2022",
+          bullets: [
+            "Incidents strukturiert aufgenommen, priorisiert und bis zur Lösung dokumentiert — Basis für Security-Incident-Handling.",
+            "Wiederkehrende Fehlerbilder erkannt und Troubleshooting-Workflows standardisiert (Root-Cause-Denken).",
+            "Desktop-, Netzwerk- und Software-Probleme unter Zeitdruck analysiert — starker Transfer zu Network/Security-Ops.",
+            "Mit Nutzern klar kommuniziert und Knowledge-Base-Einträge gepflegt (wichtig für SOC-Runbooks & Tickets).",
+          ],
+        },
+        {
+          role: "Technical Support Assistant (Intern)",
+          org: "Aani Brothers Infotech",
+          location: "Surat, Indien",
+          period: "Jul 2020 – Jun 2021",
+          bullets: [
+            "Technische Anfragen geloggt und First-Level-Support unterstützt.",
+            "Arbeitsplatz-Setups und Dokumentationsupdates begleitet.",
+            "Disziplin in Dokumentation und SLA-Denke aufgebaut — Grundlage für regulierte DE-Umgebungen.",
+          ],
+        },
+        {
+          role: "Cybersecurity Lab Projects (Eigeninitiative)",
+          org: "Persönliche Labs · GitHub",
+          location: "Berlin / Remote",
+          period: "2025 – heute",
+          bullets: [
+            "Vier öffentliche Labs aufgebaut: Network Recon, SOC Log Analyzer, Linux Hardening, PCAP Threat Hunt.",
+            "Fokus auf autorisierte Tests, Detection-Logik, Hardening-Checklisten und nachvollziehbare Reports.",
+            "Zielrollen: Junior SOC, IT-Security Specialist (m/w/d), Network Security / Support mit Security-Fokus.",
+          ],
+        },
+      ],
+    },
+    education: {
+      command: "cat ~/education.json",
+      title: "Bildungsweg",
+      subtitle:
+        "Abschlussdaten und wie die Ausbildung den Security-/Networking-Weg unterstützt.",
+      items: [
+        {
+          degree: "MSc Data Analytics",
+          school: "University for the Creative Arts (in Kooperation / Berlin-Kontext)",
+          period: "Nov 2022 – Mär 2024",
+          points: [
+            "Analytische Methoden, Datenqualität und strukturierte Auswertung — direkt nutzbar für Log- & Security-Metriken.",
+            "Python & SQL vertieft: Automatisierung, Korrelation, Reporting für Monitoring/SOC-nahe Tasks.",
+            "Brücke zur Cybersecurity: Anomalien erkennen heißt Muster in Daten finden — genau das trainiert Analytics.",
+          ],
+        },
+        {
+          degree: "Bachelor of Computer Application (BCA)",
+          school: "Veer Narmad South Gujarat University",
+          period: "2018 – 2021",
+          points: [
+            "Informatik-Fundament: Netzwerke, Betriebssysteme, Programmierung.",
+            "Systemdenken für Troubleshooting und sichere IT-Betriebsabläufe.",
+            "Basis für den späteren Weg von IT-Support in Richtung Security & Networking.",
+          ],
+        },
+      ],
+    },
+    certs: {
+      command: "ls ~/zertifikate/",
+      title: "Zertifikate",
+      subtitle:
+        "Nachweisbare Zertifikate mit Links. Zusätzlich: geplanter Security-Lernpfad für den DE-Markt.",
+      items: [
+        {
+          name: "HackerRank SQL Basics",
+          issuer: "HackerRank",
+          date: "Jul 2024",
+          note: "Relevant für Log-/Alert-Daten, Abfragen und Security-Reporting.",
+          url: "https://www.hackerrank.com/certificates/b9049dbd7485",
+        },
+        {
+          name: "Python For Beginner and Intermediate Learners",
+          issuer: "Codebasics",
+          date: "Jun 2024",
+          note: "Grundlage für Security-Automation, Parser und Lab-Tooling.",
+          url: "https://codebasics.io/certificate/CB-48-103631",
+        },
+        {
+          name: "JavaScript",
+          issuer: "NamasteDev.com",
+          date: "Apr 2025",
+          note: "Web-Grundlagen — hilfreich für AppSec-Awareness und Frontend-Angriffsflächen.",
+          url: "https://namastedev.com/varsanirumit/certificates/namaste-javascript",
+        },
+        {
+          name: "Namaste React",
+          issuer: "NamasteDev.com",
+          date: "2025",
+          note: "Moderne Web-Apps verstehen — Transfer zu sicheren Client-Architekturen.",
+          url: "https://namastedev.com/varsanirumit/certificates/namaste-react",
+        },
+      ],
+      roadmapTitle: "geplanter security-lernpfad",
+      roadmap: [
+        "CompTIA Network+ — Netzwerkfundament (geplant)",
+        "CompTIA Security+ — Security-Fundament (geplant)",
+        "Hands-on: TryHackMe / lab-basierte SOC-Pfade (laufend)",
+      ],
+      viewCert: "Zertifikat ansehen ↗",
+    },
+    blog: {
+      command: "grep -R 'writeup' ~/notes",
+      title: "Blog & Writeups",
+      subtitle: "Kurze Notizen aus Labs — Netzwerk, Analyse, Security-Ops.",
+      read: "Writeup lesen →",
+      posts: [
+        {
+          slug: "reading-the-wire-wireshark-basics",
+          title: "Die Leitung lesen: Wireshark-Basics für Defenders",
+          date: "2026-06-12",
+          tags: ["netzwerk", "wireshark", "soc"],
+          excerpt:
+            "Mein PCAP-Workflow: Capture vs. Display Filter, TCP-Streams folgen und merkwürdiges DNS erkennen.",
+          content: [
+            "Paketanalyse macht Theorie greifbar. Wenn etwas im Netz seltsam wirkt, sagt die Leitung oft die Wahrheit.",
+            "Workflow: erst Conversations und Protocol Hierarchy, dann TCP-Streams der interessanten Sessions.",
+            "Filter, die ich bereithalte: dns, http.request, tcp.flags.syn == 1 && tcp.flags.ack == 0, ip.addr == <host>.",
+            "Nächster Schritt: annotierte PCAPs (normaler Webtraffic vs. Scan-Noise), damit Anomalien schneller auffallen.",
+          ],
+        },
+        {
+          slug: "subnetting-without-panic",
+          title: "Subnetting ohne Panik",
+          date: "2026-05-28",
+          tags: ["netzwerk", "grundlagen"],
+          excerpt:
+            "CIDR, Host-Counts und warum VLANs das Vertrauensmodell ändern — praxisnah erklärt.",
+          content: [
+            "Subnetting ist Bit-Buchhaltung: Host-Bits wählen, Adressraum sauber schneiden.",
+            "Im Homelab segmentiere ich Management, Server, IoT und Guest — mit unterschiedlichen Trust-Levels.",
+            "VLANs sind allein keine Security, aber sie machen Policy Enforcement erst möglich.",
+            "Übung: /24, /26, /28 so lange berechnen, bis es unter einer Minute sitzt.",
+          ],
+        },
+        {
+          slug: "from-it-support-to-security-ops",
+          title: "Vom IT-Support zu Security Ops",
+          date: "2026-05-10",
+          tags: ["karriere", "soc", "support"],
+          excerpt:
+            "Warum Incident-Doku, Troubleshooting und Analytics ein starker Einstieg in die Cybersecurity sind.",
+          content: [
+            "Security Operations steckt voller Support-DNA: Tickets, Priorisierung, klare Kommunikation, Beweise.",
+            "Mein IT-Support-Hintergrund trainiert genau das — plus Neugier auf Netzwerk und Logs.",
+            "Analytics hilft: Failed Logins, Top Talker, seltene Ports — das sind Datenfragen mit Security-Impact.",
+            "Für DE-Recruiter: ich bringe Betriebsreife mit und baue gezielt Security-Labs, um die Fachlücke zu schließen.",
+          ],
+        },
+      ],
+    },
+    contact: {
+      command: "nc -vz kontakt 443",
+      title: "Kontakt",
+      subtitle:
+        "Offen für Einstiegs- und Intermediate-Rollen in Cybersecurity & Networking — bundesweit in Deutschland.",
+      email: "E-Mail",
+      linkedin: "LinkedIn",
+      location: "Standort",
+      locationValue: "Berlin · Umzug DE-weit möglich",
+      status: "Status",
+      statusValue: "Sofort verfügbar · Work Permit DE",
+      github: "GitHub",
+      formHint: "$ compose --to operator",
+      name: "name",
+      message: "nachricht",
+      send: "./nachricht_senden",
+      sent: "Mail-Client öffnet sich… sonst bitte direkt per E-Mail schreiben.",
+      namePh: "whoami",
+      emailPh: "you@firma.de",
+      messagePh: "Nachricht / Rolle / Standort…",
+    },
+    footer: {
+      built: "gebaut mit Next.js · Tailwind · Vercel-ready",
+      copy: "alle pakete reserviert",
+    },
+    notFound: {
+      title: "404 — host not found",
+      body: "Route nicht in der Routing-Tabelle. Zurück zur Startseite.",
+      home: "./cd_home",
+    },
+  },
+  en: {
+    meta: {
+      title: "Rumit Varsani | Cybersecurity & Networking Portfolio",
+      description:
+        "Portfolio of Rumit Varsani — IT support background, focused on cybersecurity & networking. Open to entry and intermediate roles across Germany.",
+    },
+    nav: {
+      home: "home",
+      about: "about",
+      skills: "skills",
+      projects: "projects",
+      experience: "experience",
+      education: "education",
+      certs: "certs",
+      blog: "blog",
+      contact: "contact",
+    },
+    lang: { de: "DE", en: "EN", label: "Language" },
+    hero: {
+      status: "Berlin · mobile across Germany · available now",
+      whoami: "whoami",
+      title: "Cybersecurity & Networking",
+      subtitle:
+        "From IT support into cybersecurity — building practical labs in networking, logs and hardening. Seeking entry to intermediate roles anywhere in Germany.",
+      ctaProjects: "./view_projects",
+      ctaContact: "./contact",
+      linkedin: "linkedin ↗",
+      github: "github ↗",
+      stats: [
+        { label: "focus", value: "sec + net" },
+        { label: "base", value: "all of DE" },
+        { label: "level", value: "entry→mid" },
+      ],
+      terminalTitle: "rumit@ops:~/portfolio$",
+      bootLines: [
+        "initializing secure shell…",
+        "loading network stack… ok",
+        "mounting security modules… ok",
+        "operator: Rumit Varsani",
+        "profile: cybersecurity & networking",
+        "status: open to roles across Germany",
+      ],
+      tip: "TIP explore modules — skills, labs, certs, contact.",
+    },
+    about: {
+      command: "cat ~/about.md",
+      title: "About",
+      subtitle:
+        "Why cybersecurity & networking — and how IT support + analytics lead there.",
+      paragraphs: [
+        "I'm Rumit Varsani, based in Berlin and ready to work anywhere in Germany. My foundation is hands-on IT support: documenting incidents, systematic troubleshooting, and solving user problems under pressure.",
+        "I am deliberately directing that foundation into cybersecurity and networking — protocols, packet analysis, log analysis, Linux hardening, and secure operations. I learn by building labs that recruiters can review.",
+        "My MSc in Data Analytics (2022–2024) is an asset for security, not a detour: logs, metrics and anomalies are data problems. SQL, Python and structured analysis transfer well into SOC, monitoring and security reporting — where many junior security roles begin.",
+      ],
+      focusTitle: "focus_areas.cfg",
+      focusHint: "# current priorities",
+      focusAreas: [
+        "Network protocols, subnetting & segmentation",
+        "Defensive security / SOC fundamentals",
+        "Linux hardening & secure administration",
+        "Log analysis & security automation (Python/Bash)",
+      ],
+    },
+    skills: {
+      command: "ls -la ~/skills/",
+      title: "Skills & Tooling",
+      subtitle:
+        "Cybersecurity & networking only — aligned with the German IT security market (Junior SOC, network/IT security, security-aware support).",
+      groups: {
+        security: "security",
+        networking: "networking",
+        operations: "ops & defence",
+      },
+      security: [
+        { name: "Security fundamentals / CIA / threat mindset", level: 70 },
+        { name: "Log analysis & incident documentation", level: 75 },
+        { name: "Linux hardening (audit & baseline)", level: 65 },
+        { name: "OWASP Top 10 awareness", level: 60 },
+        { name: "SIEM concepts / alert triage (learning)", level: 55 },
+        { name: "GDPR / operational security awareness", level: 65 },
+      ],
+      networking: [
+        { name: "TCP/IP & OSI model", level: 80 },
+        { name: "Subnetting, VLANs & segmentation", level: 70 },
+        { name: "DNS / DHCP / HTTP(S) / VPN concepts", level: 72 },
+        { name: "Firewall basics & access control", level: 65 },
+        { name: "Wireshark / packet analysis", level: 68 },
+        { name: "Network troubleshooting", level: 75 },
+      ],
+      operations: [
+        { name: "IT support / incident handling", level: 85 },
+        { name: "Windows & Linux admin (foundational)", level: 70 },
+        { name: "Active Directory awareness", level: 55 },
+        { name: "Python for security automation", level: 72 },
+        { name: "Bash / CLI workflows", level: 68 },
+        { name: "Ticketing & clear documentation", level: 80 },
+      ],
+      toolsTitle: "toolbelt",
+      tools: [
+        "Wireshark",
+        "Nmap",
+        "tcpdump / tshark",
+        "Linux (Ubuntu)",
+        "Windows Admin",
+        "Firewall concepts",
+        "VPN concepts",
+        "Python",
+        "Bash",
+        "Git",
+        "VirtualBox / lab VMs",
+        "Log analysis",
+        "ISO 27001 awareness",
+        "BSI basics awareness",
+      ],
+    },
+    projects: {
+      command: "find ~/labs -type f -name '*.md'",
+      title: "Projects & Labs",
+      subtitle:
+        "Four practical cyber/networking labs for entry and intermediate roles — code, playbooks and documentation included.",
+      viewGithub: "Open GitHub ↗",
+      viewCode: "Code in portfolio",
+      items: [
+        {
+          id: "network-recon-toolkit",
+          title: "Network Recon Toolkit",
+          tag: "networking",
+          description:
+            "Educational recon toolkit: host discovery, port scanning, banner grabbing and JSON reports — authorized labs only, with ethics guardrails.",
+          stack: ["Python", "TCP/IP", "Sockets", "JSON Reports"],
+          highlights: [
+            "Authorization flag blocks accidental scanning",
+            "Service hints & banners for investigation skills",
+            "Report export for tickets / audit evidence",
+          ],
+          status: "lab" as const,
+          github: "https://github.com/Rumit-Varsani/network-recon-toolkit",
+          localPath: "labs/network-recon-toolkit",
+        },
+        {
+          id: "soc-auth-log-analyzer",
+          title: "SOC Auth Log Analyzer",
+          tag: "soc",
+          description:
+            "SOC-style auth log analysis: failed logins, brute-force patterns, password-spray hints — export as JSON/CSV.",
+          stack: ["Python", "Log Analysis", "Detection Rules", "CSV/JSON"],
+          highlights: [
+            "Detection rules for junior SOC scenarios",
+            "Severity sorting for fast triage",
+            "Sample logs ready for interview demos",
+          ],
+          status: "lab" as const,
+          github: "https://github.com/Rumit-Varsani/soc-auth-log-analyzer",
+          localPath: "labs/soc-auth-log-analyzer",
+        },
+        {
+          id: "linux-hardening-checklist",
+          title: "Linux Hardening Checklist",
+          tag: "hardening",
+          description:
+            "CIS-inspired Linux hardening checklist plus safe audit scripts and optional lab hardening — strong security-ops talking points.",
+          stack: ["Bash", "Linux", "SSH", "UFW", "Audit"],
+          highlights: [
+            "Read-only baseline audit for lab VMs",
+            "Checklist written in ticket/audit language",
+            "Explicit lab-only safety switches",
+          ],
+          status: "lab" as const,
+          github: "https://github.com/Rumit-Varsani/linux-hardening-checklist",
+          localPath: "labs/linux-hardening-checklist",
+        },
+        {
+          id: "pcap-threat-hunt-lab",
+          title: "PCAP Threat Hunt Lab",
+          tag: "forensics",
+          description:
+            "Packet analysis playbook with Wireshark/tshark filters, case notes and Python helpers — how defenders document network incidents.",
+          stack: ["Wireshark", "tshark", "Python", "Playbook"],
+          highlights: [
+            "Hunt workflow from scope to residual risk",
+            "Filter cheat-sheet for interviews",
+            "Example case note in ticket style",
+          ],
+          status: "lab" as const,
+          github: "https://github.com/Rumit-Varsani/pcap-threat-hunt-lab",
+          localPath: "labs/pcap-threat-hunt-lab",
+        },
+      ],
+    },
+    experience: {
+      command: "journalctl -u career",
+      title: "Experience",
+      subtitle:
+        "IT support foundations — translated into a security mindset, troubleshooting and clean documentation.",
+      items: [
+        {
+          role: "IT Support / Technical Support",
+          org: "Aani Brothers Infotech",
+          location: "Surat, India",
+          period: "Jul 2021 – Oct 2022",
+          bullets: [
+            "Logged, prioritized and documented incidents through resolution — foundation for security incident handling.",
+            "Identified recurring issue patterns and standardized troubleshooting workflows (root-cause thinking).",
+            "Diagnosed desktop, network and software issues under time pressure — strong transfer to network/security ops.",
+            "Communicated clearly with users and maintained knowledge-base notes (critical for SOC runbooks & tickets).",
+          ],
+        },
+        {
+          role: "Technical Support Assistant (Intern)",
+          org: "Aani Brothers Infotech",
+          location: "Surat, India",
+          period: "Jul 2020 – Jun 2021",
+          bullets: [
+            "Logged technical requests and supported first-level support.",
+            "Assisted with workplace setup and documentation updates.",
+            "Built discipline in documentation and SLA thinking — useful in regulated German environments.",
+          ],
+        },
+        {
+          role: "Cybersecurity Lab Projects (Self-driven)",
+          org: "Personal labs · GitHub",
+          location: "Berlin / Remote",
+          period: "2025 – Present",
+          bullets: [
+            "Built four public labs: Network Recon, SOC Log Analyzer, Linux Hardening, PCAP Threat Hunt.",
+            "Focus on authorized testing, detection logic, hardening checklists and auditable reports.",
+            "Target roles: Junior SOC, IT Security Specialist, network security / security-aware support.",
+          ],
+        },
+      ],
+    },
+    education: {
+      command: "cat ~/education.json",
+      title: "Education",
+      subtitle:
+        "Completion dates and how education supports the security & networking path.",
+      items: [
+        {
+          degree: "MSc Data Analytics",
+          school: "University for the Creative Arts (Berlin context)",
+          period: "Nov 2022 – Mar 2024",
+          points: [
+            "Analytical methods, data quality and structured evaluation — directly useful for logs & security metrics.",
+            "Deepened Python & SQL: automation, correlation and reporting for monitoring/SOC-style tasks.",
+            "Bridge to cybersecurity: spotting anomalies means finding patterns in data — analytics trains exactly that.",
+          ],
+        },
+        {
+          degree: "Bachelor of Computer Application (BCA)",
+          school: "Veer Narmad South Gujarat University",
+          period: "2018 – 2021",
+          points: [
+            "CS foundation: networks, operating systems, programming.",
+            "Systems thinking for troubleshooting and secure IT operations.",
+            "Base for the later path from IT support into security & networking.",
+          ],
+        },
+      ],
+    },
+    certs: {
+      command: "ls ~/certificates/",
+      title: "Certificates",
+      subtitle:
+        "Verifiable certificates with links. Plus a planned security learning path for the German market.",
+      items: [
+        {
+          name: "HackerRank SQL Basics",
+          issuer: "HackerRank",
+          date: "Jul 2024",
+          note: "Useful for log/alert data queries and security reporting.",
+          url: "https://www.hackerrank.com/certificates/b9049dbd7485",
+        },
+        {
+          name: "Python For Beginner and Intermediate Learners",
+          issuer: "Codebasics",
+          date: "Jun 2024",
+          note: "Foundation for security automation, parsers and lab tooling.",
+          url: "https://codebasics.io/certificate/CB-48-103631",
+        },
+        {
+          name: "JavaScript",
+          issuer: "NamasteDev.com",
+          date: "Apr 2025",
+          note: "Web fundamentals — helpful for AppSec awareness and client attack surface.",
+          url: "https://namastedev.com/varsanirumit/certificates/namaste-javascript",
+        },
+        {
+          name: "Namaste React",
+          issuer: "NamasteDev.com",
+          date: "2025",
+          note: "Understanding modern web apps — transfer to safer client architectures.",
+          url: "https://namastedev.com/varsanirumit/certificates/namaste-react",
+        },
+      ],
+      roadmapTitle: "planned security learning path",
+      roadmap: [
+        "CompTIA Network+ — networking foundation (planned)",
+        "CompTIA Security+ — security foundation (planned)",
+        "Hands-on: TryHackMe / lab-based SOC paths (ongoing)",
+      ],
+      viewCert: "View certificate ↗",
+    },
+    blog: {
+      command: "grep -R 'writeup' ~/notes",
+      title: "Blog & Writeups",
+      subtitle: "Short notes from the labs — networking, analysis, security ops.",
+      read: "read writeup →",
+      posts: [
+        {
+          slug: "reading-the-wire-wireshark-basics",
+          title: "Reading the Wire: Wireshark Basics for Defenders",
+          date: "2026-06-12",
+          tags: ["networking", "wireshark", "soc"],
+          excerpt:
+            "My PCAP workflow: capture vs display filters, following TCP streams, spotting odd DNS.",
+          content: [
+            "Packet analysis makes theory concrete. When something feels off on a network, the wire still tells the truth.",
+            "Workflow: start with Conversations and Protocol Hierarchy, then follow TCP streams for interesting sessions.",
+            "Filters I keep handy: dns, http.request, tcp.flags.syn == 1 && tcp.flags.ack == 0, ip.addr == <host>.",
+            "Next: annotated PCAPs (normal web vs scan noise) so anomalies jump out faster.",
+          ],
+        },
+        {
+          slug: "subnetting-without-panic",
+          title: "Subnetting Without Panic",
+          date: "2026-05-28",
+          tags: ["networking", "fundamentals"],
+          excerpt:
+            "CIDR, host counts, and why VLANs change the trust model — explained practically.",
+          content: [
+            "Subnetting is bit accounting: pick host bits, carve the address space cleanly.",
+            "In the homelab I segment management, servers, IoT and guest — each with different trust levels.",
+            "VLANs alone are not security, but they make policy enforcement possible.",
+            "Practice: calculate /24, /26, /28 until it takes under a minute.",
+          ],
+        },
+        {
+          slug: "from-it-support-to-security-ops",
+          title: "From IT Support to Security Ops",
+          date: "2026-05-10",
+          tags: ["career", "soc", "support"],
+          excerpt:
+            "Why incident docs, troubleshooting and analytics are a strong entry into cybersecurity.",
+          content: [
+            "Security operations is full of support DNA: tickets, prioritization, clear communication, evidence.",
+            "My IT support background trains exactly that — plus curiosity about networks and logs.",
+            "Analytics helps: failed logins, top talkers, rare ports — data questions with security impact.",
+            "For DE recruiters: I bring operational maturity and build targeted security labs to close the domain gap.",
+          ],
+        },
+      ],
+    },
+    contact: {
+      command: "nc -vz contact 443",
+      title: "Contact",
+      subtitle:
+        "Open to entry and intermediate roles in cybersecurity & networking — anywhere in Germany.",
+      email: "Email",
+      linkedin: "LinkedIn",
+      location: "Location",
+      locationValue: "Berlin · relocation across Germany OK",
+      status: "Status",
+      statusValue: "Available immediately · work permit DE",
+      github: "GitHub",
+      formHint: "$ compose --to operator",
+      name: "name",
+      message: "message",
+      send: "./send_message",
+      sent: "Opening mail client… otherwise email me directly.",
+      namePh: "whoami",
+      emailPh: "you@company.com",
+      messagePh: "Message / role / location…",
+    },
+    footer: {
+      built: "built with Next.js · Tailwind · Vercel-ready",
+      copy: "all packets reserved",
+    },
+    notFound: {
+      title: "404 — host not found",
+      body: "Route not in the routing table. Trace back home.",
+      home: "./cd_home",
+    },
+  },
+} as const;
+
+export type Dictionary = (typeof translations)["de"];
+
+export const siteConfig = {
+  name: "Rumit Varsani",
+  email: "varsanirumit@gmail.com",
+  phone: "+49 17685953965",
+  linkedin: "https://www.linkedin.com/in/rumit-varsani/",
+  github: "https://github.com/Rumit-Varsani",
+  location: "Berlin, Germany",
+};

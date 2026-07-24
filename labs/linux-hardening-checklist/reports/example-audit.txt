@@ -1,0 +1,21 @@
+=== Linux Hardening Audit ===
+Host: lab-ubuntu
+Date: 2026-07-20T10:00:00+02:00
+Kernel: 6.8.0-generic
+
+--- Users with shells ---
+rumit /bin/bash
+
+--- Listening ports (if ss available) ---
+State  Recv-Q Send-Q Local Address:Port
+LISTEN 0      128          0.0.0.0:22
+
+--- SSH config highlights ---
+PermitRootLogin no
+PasswordAuthentication yes
+PubkeyAuthentication yes
+
+--- Firewall tools ---
+found: ufw
+
+Audit complete (read-only).

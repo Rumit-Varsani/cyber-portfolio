@@ -258,3 +258,43 @@ a {
 .prose-terminal p:last-child {
   margin-bottom: 0;
 }
+
+/* Recruiter-friendly motion */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.55s ease-out both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.7s ease-out 0.12s both;
+}
+
+.skill-bar > span {
+  transition:
+    width 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-up-delay,
+  .scan-bar,
+  .cursor-blink::after {
+    animation: none !important;
+  }
+
+  .skill-bar > span {
+    transition: none;
+  }
+}
+

@@ -1,40 +1,29 @@
-import { about } from "@/data/content";
+"use client";
+
+import { useI18n } from "@/i18n/LanguageContext";
 import SectionHeading from "./SectionHeading";
 import TerminalWindow from "./TerminalWindow";
 
 export default function About() {
+  const { t } = useI18n();
+  const a = t.about;
+
   return (
     <section id="about" className="section-pad">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          command="cat ~/about.md"
-          title="About"
-          subtitle="Background, mindset, and the path into cybersecurity & networking."
-        />
-
+        <SectionHeading command={a.command} title={a.title} subtitle={a.subtitle} />
         <div className="grid gap-6 lg:grid-cols-5">
-          <div className="prose-terminal lg:col-span-3">
-            {about.paragraphs.map((p) => (
-              <p key={p.slice(0, 24)}>{p}</p>
+          <div className="prose-terminal animate-fade-up lg:col-span-3">
+            {a.paragraphs.map((p) => (
+              <p key={p.slice(0, 32)}>{p}</p>
             ))}
           </div>
-
-          <TerminalWindow
-            className="lg:col-span-2"
-            title="focus_areas.cfg"
-          >
-            <p className="mb-4 text-xs text-[var(--text-dim)]">
-              # priority learning tracks
-            </p>
+          <TerminalWindow className="animate-fade-up-delay lg:col-span-2" title={a.focusTitle}>
+            <p className="mb-4 text-xs text-[var(--text-dim)]">{a.focusHint}</p>
             <ul className="space-y-3">
-              {about.focusAreas.map((item, i) => (
-                <li
-                  key={item}
-                  className="flex gap-3 text-sm text-[var(--text-muted)]"
-                >
-                  <span className="text-[var(--green)]">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+              {a.focusAreas.map((item, i) => (
+                <li key={item} className="flex gap-3 text-sm text-[var(--text-muted)]">
+                  <span className="text-[var(--green)]">{String(i + 1).padStart(2, "0")}</span>
                   <span>{item}</span>
                 </li>
               ))}

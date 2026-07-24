@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
-import { blogPosts } from "@/data/content";
+import { translations } from "@/i18n/translations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://your-domain.vercel.app";
-  const posts = blogPosts.map((post) => ({
+  const base = "https://rumitvarsani.vercel.app";
+  const posts = translations.de.blog.posts.map((post) => ({
     url: `${base}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,

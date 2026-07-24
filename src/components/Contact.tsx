@@ -1,11 +1,14 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { site } from "@/data/content";
+import { useI18n } from "@/i18n/LanguageContext";
+import { siteConfig } from "@/i18n/translations";
 import SectionHeading from "./SectionHeading";
 import TerminalWindow from "./TerminalWindow";
 
 export default function Contact() {
+  const { t } = useI18n();
+  const c = t.contact;
   const [status, setStatus] = useState<"idle" | "sent">("idle");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -15,49 +18,37 @@ export default function Contact() {
     const name = String(data.get("name") || "");
     const email = String(data.get("email") || "");
     const message = String(data.get("message") || "");
-
     const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\n${message}`,
-    );
-
-    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
     setStatus("sent");
     form.reset();
   }
 
   return (
-    <section
-      id="contact"
-      className="section-pad border-t border-[var(--border)] bg-black/20"
-    >
+    <section id="contact" className="section-pad border-t border-[var(--border)] bg-black/20">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          command="nc -vz contact 443"
-          title="Contact"
-          subtitle="Open a channel — roles, collabs, labs, or just a technical conversation."
-        />
-
+        <SectionHeading command={c.command} title={c.title} subtitle={c.subtitle} />
         <div className="grid gap-6 lg:grid-cols-2">
-          <TerminalWindow title="channels.txt">
+          <TerminalWindow title="channels.txt" className="animate-fade-up">
             <ul className="space-y-4 text-sm">
               <li>
                 <p className="text-[10px] tracking-widest text-[var(--text-dim)] uppercase">
-                  email
+                  {c.email}
                 </p>
                 <a
-                  href={`mailto:${site.email}`}
+                  href={`mailto:${siteConfig.email}`}
                   className="text-[var(--green)] hover:underline"
                 >
-                  {site.email}
+                  {siteConfig.email}
                 </a>
               </li>
               <li>
                 <p className="text-[10px] tracking-widest text-[var(--text-dim)] uppercase">
-                  linkedin
+                  {c.linkedin}
                 </p>
                 <a
-                  href={site.linkedin}
+                  href={siteConfig.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--cyan)] hover:underline"
@@ -67,40 +58,49 @@ export default function Contact() {
               </li>
               <li>
                 <p className="text-[10px] tracking-widest text-[var(--text-dim)] uppercase">
-                  location
+                  {c.github}
                 </p>
-                <p className="text-[var(--text-muted)]">{site.location}</p>
+                <a
+                  href={siteConfig.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--cyan)] hover:underline"
+                >
+                  github.com/Rumit-Varsani
+                </a>
               </li>
               <li>
                 <p className="text-[10px] tracking-widest text-[var(--text-dim)] uppercase">
-                  status
+                  {c.location}
                 </p>
-                <p className="text-[var(--amber)]">
-                  exploring cyber / networking opportunities
+                <p className="text-[var(--text-muted)]">{c.locationValue}</p>
+              </li>
+              <li>
+                <p className="text-[10px] tracking-widest text-[var(--text-dim)] uppercase">
+                  {c.status}
                 </p>
+                <p className="text-[var(--amber)]">{c.statusValue}</p>
               </li>
             </ul>
           </TerminalWindow>
 
-          <form onSubmit={handleSubmit} className="panel space-y-4 p-5">
-            <p className="text-xs text-[var(--text-dim)]">
-              $ compose --to operator --encrypt optional
-            </p>
+          <form onSubmit={handleSubmit} className="panel animate-fade-up-delay space-y-4 p-5">
+            <p className="text-xs text-[var(--text-dim)]">{c.formHint}</p>
             <div>
               <label htmlFor="name" className="mb-1.5 block text-xs text-[var(--text-muted)]">
-                name
+                {c.name}
               </label>
               <input
                 id="name"
                 name="name"
                 required
                 className="input-terminal"
-                placeholder="whoami"
+                placeholder={c.namePh}
               />
             </div>
             <div>
               <label htmlFor="email" className="mb-1.5 block text-xs text-[var(--text-muted)]">
-                email
+                {c.email}
               </label>
               <input
                 id="email"
@@ -108,12 +108,12 @@ export default function Contact() {
                 type="email"
                 required
                 className="input-terminal"
-                placeholder="you@domain.tld"
+                placeholder={c.emailPh}
               />
             </div>
             <div>
               <label htmlFor="message" className="mb-1.5 block text-xs text-[var(--text-muted)]">
-                message
+                {c.message}
               </label>
               <textarea
                 id="message"
@@ -121,16 +121,14 @@ export default function Contact() {
                 required
                 rows={5}
                 className="input-terminal resize-y"
-                placeholder="payload goes here…"
+                placeholder={c.messagePh}
               />
             </div>
             <button type="submit" className="btn-primary w-full sm:w-auto">
-              ./send_message
+              {c.send}
             </button>
             {status === "sent" ? (
-              <p className="text-xs text-[var(--green)]">
-                opening mail client… if nothing happens, email me directly.
-              </p>
+              <p className="text-xs text-[var(--green)]">{c.sent}</p>
             ) : null}
           </form>
         </div>

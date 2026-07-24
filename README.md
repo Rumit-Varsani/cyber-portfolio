@@ -1,16 +1,12 @@
-# Rumit Varsani — Cyber Portfolio
+# Rumit Varsani — Cybersecurity Portfolio
 
-Terminal-themed personal portfolio focused on **cybersecurity** and **networking**.
+Terminal-themed portfolio focused on **Cybersecurity & Networking** for the German job market.
 
-Built with **Next.js**, **TypeScript**, and **Tailwind CSS**. Ready to deploy on **Vercel**.
-
-## Features
-
-- Dark terminal / hacker aesthetic (scanlines, green glow, mono UI)
-- Sections: Home, About, Skills, Projects/Labs, Experience, Blog, Contact
-- Blog writeups with dedicated routes (`/blog`, `/blog/[slug]`)
-- Contact form opens your mail client (`mailto:`)
-- Content centralized in `src/data/content.ts` — edit once, update everywhere
+- **Default language: German (DE)** with **English (EN) toggle**
+- IT Support foundation → Security/Networking career story
+- MSc Data Analytics framed as transferable for logs / SOC analytics
+- 4 hands-on labs under `labs/`
+- Certificates with public verification links
 
 ## Quick start
 
@@ -20,64 +16,52 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open http://localhost:3000 — site loads in **German** first. Use **DE | EN** in the navbar.
 
-## Scripts
+## Publish lab repos to GitHub
 
-| Command         | Description              |
-| --------------- | ------------------------ |
-| `npm run dev`   | Local development server |
-| `npm run build` | Production build         |
-| `npm run start` | Serve production build   |
-| `npm run lint`  | ESLint                   |
+GitHub write was not available from the automated environment. Labs live in:
 
-## Customize your content
+```
+labs/network-recon-toolkit
+labs/soc-auth-log-analyzer
+labs/linux-hardening-checklist
+labs/pcap-threat-hunt-lab
+```
 
-Edit **`src/data/content.ts`**:
+Publish each as a public repo under `Rumit-Varsani`:
 
-- `site` — name, email, LinkedIn, tagline
-- `about`, `skills`, `projects`
-- `experience`, `education`, `certifications`
-- `blogPosts` — writeups (slug, title, body)
+```bash
+# once
+gh auth login
+
+# publish all 4 labs
+./scripts/publish-labs-to-github.sh
+```
+
+After that, portfolio cards linking to:
+
+- https://github.com/Rumit-Varsani/network-recon-toolkit
+- https://github.com/Rumit-Varsani/soc-auth-log-analyzer
+- https://github.com/Rumit-Varsani/linux-hardening-checklist
+- https://github.com/Rumit-Varsani/pcap-threat-hunt-lab
+
+will resolve publicly.
 
 ## Deploy to Vercel
 
-### Option A — Vercel CLI
-
 ```bash
-npm i -g vercel
-cd ~/cyber-portfolio
-vercel
+npx vercel
 ```
 
-### Option B — GitHub + Vercel dashboard
+Or push this folder to GitHub and import in Vercel (connect to your existing project if you want to replace the current site).
 
-1. Create a GitHub repo and push this project
-2. Import the repo at [vercel.com/new](https://vercel.com/new)
-3. Framework preset: **Next.js** (auto-detected)
-4. Deploy
+## Edit content
 
-If you already have a Vercel project for your site, either:
+All DE/EN copy lives in:
 
-- Point that project’s Git root to this repo, or
-- Replace the old project files with this codebase and redeploy
+`src/i18n/translations.ts`
 
-## Project structure
+## Stack
 
-```
-src/
-  app/                 # App Router pages (home, blog, 404)
-  components/          # UI sections (Hero, Skills, etc.)
-  data/content.ts      # All portfolio copy & data
-public/                # Static assets
-```
-
-## Notes
-
-- Skill percentages and lab descriptions are starting points — update them as you grow
-- Contact form uses `mailto:` (no backend required). Swap in Formspree / Resend later if you want server-side delivery
-- GitHub URL in content may need correcting if your handle differs
-
-## License
-
-Personal portfolio — free to adapt for your own use.
+Next.js · TypeScript · Tailwind CSS · App Router
