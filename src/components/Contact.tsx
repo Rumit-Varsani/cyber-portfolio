@@ -1,55 +1,72 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { useI18n } from "@/i18n/LanguageContext";
 import { siteConfig } from "@/i18n/translations";
 import SectionHeading from "./SectionHeading";
 import TerminalWindow from "./TerminalWindow";
 
-type Status = "idle" | "sending" | "sent" | "error";
+type Status = "idle" | "sending" | "sent" | "error" | "rate";
+
+const MAX_NAME = 100;
+const MAX_EMAIL = 200;
+const MAX_MESSAGE = 4000;
 
 export default function Contact() {
   const { t } = useI18n();
   const c = t.contact;
   const [status, setStatus] = useState<Status>("idle");
+  const lastSent = useRef(0);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const name = String(data.get("name") || "").trim();
-    const email = String(data.get("email") || "").trim();
-    const message = String(data.get("message") || "").trim();
+
+    // Honeypot
+    if (String(data.get("company") || "").trim()) {
+      setStatus("sent");
+      form.reset();
+      return;
+    }
+
+    const name = String(data.get("name") || "").trim().slice(0, MAX_NAME);
+    const email = String(data.get("email") || "").trim().slice(0, MAX_EMAIL);
+    const message = String(data.get("message") || "").trim().slice(0, MAX_MESSAGE);
+
+    // Client cooldown (extra layer)
+    const now = Date.now();
+    if (now - lastSent.current < 8000) {
+      setStatus("rate");
+      return;
+    }
+
+    if (name.length < 2 || message.length < 5) {
+      setStatus("error");
+      return;
+    }
 
     setStatus("sending");
 
     try {
-      // FormSubmit delivers to siteConfig.email (varsanirumit@gmail.com)
-      // First submission: check Gmail for FormSubmit activation email.
-      const res = await fetch(
-        `https://formsubmit.co/ajax/${siteConfig.email}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            message,
-            _subject: `Portfolio contact from ${name}`,
-            _template: "table",
-            _captcha: "false",
-            _replyto: email,
-          }),
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-      );
+        body: JSON.stringify({ name, email, message, company: "" }),
+      });
 
+      if (res.status === 429) {
+        setStatus("rate");
+        return;
+      }
       if (!res.ok) {
-        throw new Error(`FormSubmit HTTP ${res.status}`);
+        throw new Error(`HTTP ${res.status}`);
       }
 
+      lastSent.current = Date.now();
       setStatus("sent");
       form.reset();
     } catch {
@@ -117,8 +134,28 @@ export default function Contact() {
             </ul>
           </TerminalWindow>
 
-          <form onSubmit={handleSubmit} className="panel animate-fade-up-delay space-y-4 p-5">
+          <form
+            onSubmit={handleSubmit}
+            className="panel relative animate-fade-up-delay space-y-4 p-5"
+            autoComplete="on"
+          >
             <p className="text-xs text-[var(--text-dim)]">{c.formHint}</p>
+
+            {/* Honeypot — hidden from users, bots often fill it */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+            >
+              <label htmlFor="company">Company</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div>
               <label htmlFor="name" className="mb-1.5 block text-xs text-[var(--text-muted)]">
                 {c.name}
@@ -127,6 +164,7 @@ export default function Contact() {
                 id="name"
                 name="name"
                 required
+                maxLength={MAX_NAME}
                 className="input-terminal"
                 placeholder={c.namePh}
                 disabled={status === "sending"}
@@ -141,6 +179,7 @@ export default function Contact() {
                 name="email"
                 type="email"
                 required
+                maxLength={MAX_EMAIL}
                 className="input-terminal"
                 placeholder={c.emailPh}
                 disabled={status === "sending"}
@@ -155,6 +194,7 @@ export default function Contact() {
                 name="message"
                 required
                 rows={5}
+                maxLength={MAX_MESSAGE}
                 className="input-terminal resize-y"
                 placeholder={c.messagePh}
                 disabled={status === "sending"}
@@ -169,6 +209,9 @@ export default function Contact() {
             </button>
             {status === "sent" ? (
               <p className="text-xs text-[var(--green)]">{c.sent}</p>
+            ) : null}
+            {status === "rate" ? (
+              <p className="text-xs text-[var(--amber)]">{c.rateLimited}</p>
             ) : null}
             {status === "error" ? (
               <p className="text-xs text-[var(--red)]">

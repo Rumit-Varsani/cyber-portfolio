@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://your-domain.vercel.app/sitemap.xml
+# No need to crawl API
+Disallow: /api/
+
+Sitemap: https://rumitvarsani.vercel.app/sitemap.xml
