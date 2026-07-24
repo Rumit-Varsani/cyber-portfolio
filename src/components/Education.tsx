@@ -23,7 +23,7 @@ export default function Education() {
               </p>
               <h3 className="text-lg text-[var(--green)]">{item.degree}</h3>
               <p className="mt-1 text-sm text-[var(--text-muted)]">{item.school}</p>
-              <ul className="mt-4 space-y-2 border-t border-[var(--border)] pt-4">
+              <ul className="section-copy mt-4 space-y-2 border-t border-[var(--border)] pt-4">
                 {item.points.map((point) => (
                   <li key={point} className="text-sm leading-relaxed text-[var(--text-dim)]">
                     <span className="text-[var(--green)]">+</span> {point}

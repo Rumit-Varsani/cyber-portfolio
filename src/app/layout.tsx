@@ -53,6 +53,12 @@ export default function RootLayout({
       <body className="terminal-bg flex min-h-full flex-col font-mono">
         <LanguageProvider>
           <div className="scan-bar" aria-hidden />
+          <a
+            href="#home"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded focus:bg-[var(--bg-panel)] focus:px-3 focus:py-2 focus:text-[var(--green)]"
+          >
+            Skip to content
+          </a>
           <Navbar />
           <main className="relative z-10 flex-1">{children}</main>
           <Footer />

@@ -25,7 +25,7 @@ export default function Projects() {
                 </span>
               </div>
               <h3 className="mb-2 text-lg text-[var(--text)]">{project.title}</h3>
-              <p className="mb-4 flex-1 text-sm leading-relaxed text-[var(--text-muted)]">
+              <p className="section-copy mb-4 flex-1 text-sm leading-relaxed text-[var(--text-muted)]">
                 {project.description}
               </p>
               <ul className="mb-4 space-y-1.5 border-l border-[var(--border)] pl-3">

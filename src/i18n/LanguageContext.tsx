@@ -61,7 +61,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    document.documentElement.lang = lang;
+    // Keep <html lang> in sync after hydrate (avoids fighting SSR markup)
+    if (document.documentElement.lang !== lang) {
+      document.documentElement.lang = lang;
+    }
   }, [lang]);
 
   const value = useMemo(

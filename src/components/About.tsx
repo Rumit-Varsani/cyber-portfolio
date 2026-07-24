@@ -13,7 +13,7 @@ export default function About() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading command={a.command} title={a.title} subtitle={a.subtitle} />
         <div className="grid gap-6 lg:grid-cols-5">
-          <div className="prose-terminal animate-fade-up lg:col-span-3">
+          <div className="prose-terminal section-copy animate-fade-up lg:col-span-3">
             {a.paragraphs.map((p) => (
               <p key={p.slice(0, 32)}>{p}</p>
             ))}

@@ -19,11 +19,13 @@ export default function Certificates() {
               style={{ animationDelay: `${i * 70}ms` }}
             >
               <div className="mb-2 flex flex-wrap items-start justify-between gap-2">
-                <h3 className="text-base text-[var(--text)]">{cert.name}</h3>
-                <span className="text-xs text-[var(--text-dim)]">{cert.date}</span>
+                <h3 className="min-w-0 flex-1 break-words text-base leading-snug text-[var(--text)]">
+                  {cert.name}
+                </h3>
+                <span className="shrink-0 text-xs text-[var(--text-dim)]">{cert.date}</span>
               </div>
               <p className="text-sm text-[var(--cyan)]">{cert.issuer}</p>
-              <p className="mt-2 flex-1 text-xs leading-relaxed text-[var(--text-muted)]">
+              <p className="section-copy mt-2 flex-1 text-xs leading-relaxed text-[var(--text-muted)]">
                 {cert.note}
               </p>
               <a

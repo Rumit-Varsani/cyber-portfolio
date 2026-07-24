@@ -39,6 +39,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
@@ -47,6 +48,44 @@ body {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+.font-sans {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Readable body text while keeping terminal chrome mono */
+.prose-terminal,
+.section-copy {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.sr-only:focus-visible,
+.focus\:not-sr-only:focus {
+  position: fixed;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }
 
 /* CRT / terminal atmosphere */
@@ -106,16 +145,16 @@ body {
   pointer-events: none;
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 1;
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(57, 255, 20, 0.04),
+    rgba(57, 255, 20, 0.035),
     transparent
   );
-  height: 120px;
-  animation: scan 8s linear infinite;
-  opacity: 0.5;
+  height: 100px;
+  animation: scan 10s linear infinite;
+  opacity: 0.4;
 }
 
 /* Custom scrollbar */
@@ -191,11 +230,19 @@ a {
   font-size: 0.85rem;
   letter-spacing: 0.04em;
   transition: all 0.2s ease;
+  min-height: 2.75rem;
 }
 
 .btn-primary:hover {
   background: rgba(57, 255, 20, 0.22);
   box-shadow: 0 0 20px var(--green-glow);
+}
+
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible,
+.input-terminal:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
 }
 
 .btn-ghost {
@@ -210,6 +257,7 @@ a {
   font-size: 0.85rem;
   letter-spacing: 0.04em;
   transition: all 0.2s ease;
+  min-height: 2.75rem;
 }
 
 .btn-ghost:hover {

@@ -29,7 +29,7 @@ export default function Experience() {
               <p className="mb-3 text-sm text-[var(--text-muted)]">
                 {job.org} · {job.location}
               </p>
-              <ul className="space-y-2">
+              <ul className="section-copy space-y-2">
                 {job.bullets.map((b) => (
                   <li key={b} className="text-sm leading-relaxed text-[var(--text-dim)]">
                     <span className="text-[var(--green)]">›</span> {b}
