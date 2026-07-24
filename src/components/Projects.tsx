@@ -25,6 +25,9 @@ export default function Projects() {
                 </span>
               </div>
               <h3 className="mb-2 text-lg text-[var(--text)]">{project.title}</h3>
+              <p className="mb-1 text-[10px] tracking-wide text-[var(--text-dim)]">
+                by Rumit Varsani · GitHub
+              </p>
               <p className="mb-4 flex-1 text-sm leading-relaxed text-[var(--text-muted)]">
                 {project.description}
               </p>
@@ -45,7 +48,7 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              <div className="mt-4 flex flex-wrap gap-2">
+              <div className="mt-4">
                 <a
                   href={project.github}
                   target="_blank"
@@ -53,14 +56,6 @@ export default function Projects() {
                   className="btn-primary text-xs"
                 >
                   {p.viewGithub}
-                </a>
-                <a
-                  href={`https://github.com/Rumit-Varsani/cyber-portfolio/tree/main/${project.localPath}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-ghost text-xs"
-                >
-                  {p.viewCode}
                 </a>
               </div>
             </article>

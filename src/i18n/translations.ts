@@ -120,8 +120,7 @@ export const translations = {
       title: "Projekte & Labs",
       subtitle:
         "Vier praxisnahe Cyber-/Networking-Labs für Einstiegs- und Intermediate-Rollen — Code, Playbooks und Dokumentation inklusive.",
-      viewGithub: "GitHub öffnen ↗",
-      viewCode: "Code im Portfolio",
+      viewGithub: "Projekt auf GitHub ansehen ↗",
       items: [
         {
           id: "network-recon-toolkit",
@@ -137,7 +136,6 @@ export const translations = {
           ],
           status: "lab" as const,
           github: "https://github.com/Rumit-Varsani/network-recon-toolkit",
-          localPath: "labs/network-recon-toolkit",
         },
         {
           id: "soc-auth-log-analyzer",
@@ -153,7 +151,6 @@ export const translations = {
           ],
           status: "lab" as const,
           github: "https://github.com/Rumit-Varsani/soc-auth-log-analyzer",
-          localPath: "labs/soc-auth-log-analyzer",
         },
         {
           id: "linux-hardening-checklist",
@@ -169,7 +166,6 @@ export const translations = {
           ],
           status: "lab" as const,
           github: "https://github.com/Rumit-Varsani/linux-hardening-checklist",
-          localPath: "labs/linux-hardening-checklist",
         },
         {
           id: "pcap-threat-hunt-lab",
@@ -185,7 +181,6 @@ export const translations = {
           ],
           status: "lab" as const,
           github: "https://github.com/Rumit-Varsani/pcap-threat-hunt-lab",
-          localPath: "labs/pcap-threat-hunt-lab",
         },
       ],
     },
@@ -455,8 +450,7 @@ export const translations = {
       title: "Projects & Labs",
       subtitle:
         "Four practical cyber/networking labs for entry and intermediate roles — code, playbooks and documentation included.",
-      viewGithub: "Open GitHub ↗",
-      viewCode: "Code in portfolio",
+      viewGithub: "View project on GitHub ↗",
       items: [
         {
           id: "network-recon-toolkit",
@@ -472,7 +466,6 @@ export const translations = {
           ],
           status: "lab" as const,
           github: "https://github.com/Rumit-Varsani/network-recon-toolkit",
-          localPath: "labs/network-recon-toolkit",
         },
         {
           id: "soc-auth-log-analyzer",
@@ -488,7 +481,6 @@ export const translations = {
           ],
           status: "lab" as const,
           github: "https://github.com/Rumit-Varsani/soc-auth-log-analyzer",
-          localPath: "labs/soc-auth-log-analyzer",
         },
         {
           id: "linux-hardening-checklist",
@@ -504,7 +496,6 @@ export const translations = {
           ],
           status: "lab" as const,
           github: "https://github.com/Rumit-Varsani/linux-hardening-checklist",
-          localPath: "labs/linux-hardening-checklist",
         },
         {
           id: "pcap-threat-hunt-lab",
@@ -520,7 +511,6 @@ export const translations = {
           ],
           status: "lab" as const,
           github: "https://github.com/Rumit-Varsani/pcap-threat-hunt-lab",
-          localPath: "labs/pcap-threat-hunt-lab",
         },
       ],
     },

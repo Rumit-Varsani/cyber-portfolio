@@ -1,5 +1,9 @@
 # PCAP Threat Hunt Lab
 
+> **Built by [Rumit Varsani](https://github.com/Rumit-Varsani)** · Berlin, Germany · Cybersecurity & Networking portfolio lab
+
+> Repository: https://github.com/Rumit-Varsani/pcap-threat-hunt-lab
+
 Hands-on packet analysis playbook for junior defenders and network analysts.
 
 ## What you practice

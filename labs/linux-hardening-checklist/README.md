@@ -1,5 +1,9 @@
 # Linux Hardening Checklist
 
+> **Built by [Rumit Varsani](https://github.com/Rumit-Varsani)** · Berlin, Germany · Cybersecurity & Networking portfolio lab
+
+> Repository: https://github.com/Rumit-Varsani/linux-hardening-checklist
+
 Practical **CIS-inspired** Linux hardening checklist + Bash helpers for lab VMs.
 
 Ideal talking points for German employers looking for Junior IT Security /

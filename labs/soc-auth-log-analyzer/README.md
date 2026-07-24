@@ -1,5 +1,9 @@
 # SOC Auth Log Analyzer
 
+> **Built by [Rumit Varsani](https://github.com/Rumit-Varsani)** · Berlin, Germany · Cybersecurity & Networking portfolio lab
+
+> Repository: https://github.com/Rumit-Varsani/soc-auth-log-analyzer
+
 Junior SOC / security monitoring style tool that parses authentication logs and
 highlights **failed logins**, **brute-force patterns**, and top noisy sources.
 

@@ -1,5 +1,9 @@
 # Network Recon Toolkit
 
+> **Built by [Rumit Varsani](https://github.com/Rumit-Varsani)** · Berlin, Germany · Cybersecurity & Networking portfolio lab
+
+> Repository: https://github.com/Rumit-Varsani/network-recon-toolkit
+
 Educational network reconnaissance toolkit for **authorized labs only**.
 
 Built for entry / intermediate cybersecurity & networking roles in Germany  
