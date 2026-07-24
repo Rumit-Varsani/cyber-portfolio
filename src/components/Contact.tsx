@@ -6,23 +6,55 @@ import { siteConfig } from "@/i18n/translations";
 import SectionHeading from "./SectionHeading";
 import TerminalWindow from "./TerminalWindow";
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 export default function Contact() {
   const { t } = useI18n();
   const c = t.contact;
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [status, setStatus] = useState<Status>("idle");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const name = String(data.get("name") || "");
-    const email = String(data.get("email") || "");
-    const message = String(data.get("message") || "");
-    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-    window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
-    setStatus("sent");
-    form.reset();
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const message = String(data.get("message") || "").trim();
+
+    setStatus("sending");
+
+    try {
+      // FormSubmit delivers to siteConfig.email (varsanirumit@gmail.com)
+      // First submission: check Gmail for FormSubmit activation email.
+      const res = await fetch(
+        `https://formsubmit.co/ajax/${siteConfig.email}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+            _subject: `Portfolio contact from ${name}`,
+            _template: "table",
+            _captcha: "false",
+            _replyto: email,
+          }),
+        },
+      );
+
+      if (!res.ok) {
+        throw new Error(`FormSubmit HTTP ${res.status}`);
+      }
+
+      setStatus("sent");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -42,6 +74,7 @@ export default function Contact() {
                 >
                   {siteConfig.email}
                 </a>
+                <p className="mt-1 text-[10px] text-[var(--text-dim)]">{c.inboxNote}</p>
               </li>
               <li>
                 <p className="text-[10px] tracking-widest text-[var(--text-dim)] uppercase">
@@ -96,6 +129,7 @@ export default function Contact() {
                 required
                 className="input-terminal"
                 placeholder={c.namePh}
+                disabled={status === "sending"}
               />
             </div>
             <div>
@@ -109,6 +143,7 @@ export default function Contact() {
                 required
                 className="input-terminal"
                 placeholder={c.emailPh}
+                disabled={status === "sending"}
               />
             </div>
             <div>
@@ -122,13 +157,26 @@ export default function Contact() {
                 rows={5}
                 className="input-terminal resize-y"
                 placeholder={c.messagePh}
+                disabled={status === "sending"}
               />
             </div>
-            <button type="submit" className="btn-primary w-full sm:w-auto">
-              {c.send}
+            <button
+              type="submit"
+              className="btn-primary w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-60"
+              disabled={status === "sending"}
+            >
+              {status === "sending" ? c.sending : c.send}
             </button>
             {status === "sent" ? (
               <p className="text-xs text-[var(--green)]">{c.sent}</p>
+            ) : null}
+            {status === "error" ? (
+              <p className="text-xs text-[var(--red)]">
+                {c.error}{" "}
+                <a href={`mailto:${siteConfig.email}`} className="text-[var(--cyan)] underline">
+                  {siteConfig.email}
+                </a>
+              </p>
             ) : null}
           </form>
         </div>

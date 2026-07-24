@@ -17,7 +17,6 @@ export default function Navbar() {
     { href: "#experience", label: t.nav.experience },
     { href: "#education", label: t.nav.education },
     { href: "#certs", label: t.nav.certs },
-    { href: "#blog", label: t.nav.blog },
     { href: "#contact", label: t.nav.contact },
   ];
 
