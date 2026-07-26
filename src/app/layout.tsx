@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rumitvarsani.vercel.app"),
   title: {
     default: translations.de.meta.title,
     template: "%s | Rumit Varsani",
@@ -37,6 +38,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     alternateLocale: "en_US",
+    url: "https://rumitvarsani.vercel.app",
+    siteName: "Rumit Varsani",
+    images: [
+      {
+        url: "/og-portfolio.png",
+        width: 1200,
+        height: 628,
+        alt: "Rumit Varsani — IT Support, Networking & Security Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: translations.de.meta.title,
+    description: translations.de.meta.description,
+    images: ["/og-portfolio.png"],
   },
 };
 
